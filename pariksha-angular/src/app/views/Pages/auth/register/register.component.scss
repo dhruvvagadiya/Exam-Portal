@@ -1,0 +1,22 @@
+a {
+  text-decoration: none;
+}
+.signup-page {
+  width: 100%;
+  height: 100vh;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+}
+.form-right i {
+  font-size: 100px;
+}
+
+.error-msg {
+  font-size: .8rem !important;
+  color: rgb(230, 86, 86);
+}
+
+input.ng-touched.ng-invalid {
+  border-color: red;
+}

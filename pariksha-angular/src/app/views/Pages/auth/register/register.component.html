@@ -1,0 +1,52 @@
+<div class="signup-page bg-light">
+    <div class="container">
+        <h3 class="mb-3">Sign up</h3>
+        <div class="bg-white shadow rounded">
+            <div class="row">
+                <div class="col-md-7 pe-0">
+                    <div class="form-left h-100 py-5 px-5">
+
+                        <form>
+                            <!-- Username input -->
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example1">Username</label>
+                                <input type="text" id="form2Example1" class="form-control"/>
+                            </div>
+                          
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example2">Password</label>
+                                <input type="password" id="form2Example2" class="form-control" />
+                            </div>
+                          
+                            <!-- 2 column grid layout for inline styling -->
+                            <div class="row mb-4">
+                          
+                              <div class="col">
+                                <!-- Simple link -->
+                                <a href="#!">Forgot password?</a>
+                              </div>
+                            </div>
+                          
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4" >Sign in</button>
+                          
+                            <!-- Register buttons -->
+                            <div class="text-center">
+                              <p>Already a member? <a [routerLink]="'../login'">Login</a></p>
+                            </div>
+                          </form>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5 ps-0 d-none d-md-block">
+                    <div class="form-right h-100 bg-primary text-white text-center pt-5">
+                        <i class="bi bi-bootstrap"></i>
+                        <h2 class="fs-1">Create an account!</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

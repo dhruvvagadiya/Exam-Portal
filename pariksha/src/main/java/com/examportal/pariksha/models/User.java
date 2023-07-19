@@ -31,7 +31,7 @@ public class User {
     private String email;
 
     @NotBlank
-    @Size(max = 120)
+    @Size(max = 30, min = 6)
     private String password;
 
     @NotBlank
