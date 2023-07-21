@@ -1,20 +1,19 @@
 package com.examportal.pariksha.security.payload.response;
 
+import com.examportal.pariksha.models.User;
+
 import java.util.List;
 
 public class JwtResponse {
     private String token;
     private String type = "Bearer";
-    private int id;
-    private String username;
-    private String email;
+
+    private User user;
     private List<String> roles;
 
-    public JwtResponse(String accessToken, int id, String username, String email, List<String> roles) {
+    public JwtResponse(String accessToken, User user, List<String> roles) {
         this.token = accessToken;
-        this.id = id;
-        this.username = username;
-        this.email = email;
+        this.user = user;
         this.roles = roles;
     }
 
@@ -34,28 +33,12 @@ public class JwtResponse {
         this.type = tokenType;
     }
 
-    public int getId() {
-        return id;
+    public User getUser() {
+        return user;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<String> getRoles() {

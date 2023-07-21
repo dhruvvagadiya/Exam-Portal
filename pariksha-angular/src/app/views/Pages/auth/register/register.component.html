@@ -1,8 +1,8 @@
-<!-- <div class="container"> -->
+<div class="container mt-5">
     <div class="shadow rounded m-5">
         <div class="row">
             <div class="col-md-7 pe-0">
-                <div class="form-left py-5 px-5">
+                <div class="form-left py-3 px-5">
 
                     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
@@ -72,19 +72,20 @@
 
                         </div>
 
-                        <div class="form-outline mb-4">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control" formControlName="password" />
-                            <span *ngIf="registerForm.get('password')!.touched && registerForm.get('username')!.errors">
-                                <div class="error-msg" *ngIf="registerForm.get('password')!.errors?.['required']">* Password is required.    </div>
-                                <div class="error-msg" *ngIf="registerForm.get('password')!.errors?.['minlength'] || registerForm.get('password')!.errors?.['minlength']">* Password must be in range 6 to 30. </div>
-                            </span>
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label">Confirm Password</label>
-                            <input type="text" class="form-control" formControlName="confirmPassword"/>
-                            <div class="error-msg" *ngIf="registerForm.get('confirmPassword')!.touched  && registerForm!.errors?.['passwordMatch']">* Passwords does not match.</div>
+                        <div class="row">
+                            <div class="col-lg-6 mb-4">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" formControlName="password" />
+                                <span *ngIf="registerForm.get('password')!.touched && registerForm.get('username')!.errors">
+                                    <div class="error-msg" *ngIf="registerForm.get('password')!.errors?.['required']">* Password is required.    </div>
+                                    <div class="error-msg" *ngIf="registerForm.get('password')!.errors?.['minlength'] || registerForm.get('password')!.errors?.['minlength']">* Password must be in range 6 to 30. </div>
+                                </span>
+                            </div>
+                            <div class="col form-outline mb-4">
+                                <label class="form-label">Confirm Password</label>
+                                <input type="text" class="form-control" formControlName="confirmPassword"/>
+                                <div class="error-msg" *ngIf="registerForm.get('confirmPassword')!.touched  && registerForm!.errors?.['passwordMatch']">* Passwords does not match.</div>
+                            </div>
                         </div>
 
                         <!-- 2 column grid layout for inline styling -->
@@ -97,11 +98,11 @@
                         </div>
 
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block mb-4"
+                        <button type="submit" class="btn btn-primary btn-block mb-2"
                         [disabled]="registerForm.invalid">Sign up</button>
 
                         <!-- Register buttons -->
-                        <div class="text-center">
+                        <div class="text-left">
                             <p>Already a member? <a [routerLink]="'../login'">Login</a></p>
                         </div>
                     </form>
@@ -117,4 +118,4 @@
             </div>
         </div>
     </div>
-<!-- </div> -->
+</div>

@@ -1,5 +1,6 @@
 package com.examportal.pariksha.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -29,6 +30,7 @@ public class User {
     private String email;
 
     @NotBlank
+    @JsonIgnore
     private String password;
 
     @NotBlank
@@ -51,6 +53,7 @@ public class User {
 
     private Date updatedAt = new Date();
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(  name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

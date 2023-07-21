@@ -3,23 +3,40 @@ import { RouterModule, Routes } from '@angular/router';
 import { BaseComponent } from './views/layout/base/base.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { DashboardComponent } from './views/Pages/dashboard/dashboard.component';
+import { HomeComponent } from './views/Pages/home/home.component';
+import { AboutComponent } from './views/Pages/about/about.component';
+import { ContactComponent } from './views/Pages/contact/contact.component';
 
 const routes : Routes = [
-    {
-      path : 'auth',
-      loadChildren : () => import('./views/Pages/auth/auth.module').then(m => m.AuthModule)
-    },
     {
       path :'',
       component : BaseComponent,
       canActivate : [AuthGuard],
       children : [
         {
-          path: 'dashboard', 
+          path: 'home', 
+          component : HomeComponent
+        },
+        {
+          path: 'about', 
+          component : AboutComponent
+        },
+        {
+          path: 'contact', 
+          component : ContactComponent
+        },
+        {
+          path : 'dashboard',
           component : DashboardComponent
         },
-        { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+        { 
+          path: '', redirectTo: 'home', pathMatch: 'full'
+        }
       ]
+    },
+    {
+      path : 'auth',
+      loadChildren : () => import('./views/Pages/auth/auth.module').then(m => m.AuthModule)
     }
 ]
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { JwtHelper } from '../helpers/jwt-helper';
 import { User } from '../models/User/user.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -25,10 +26,8 @@ export class AuthService {
         }
     }
 
-    getLoggedInUserInfo() {
-        let token = localStorage.getItem('USERTOKEN');
-        var user: User = this.jwtHelper.decodeToken(''+token);
-        return user;
+    getLoggedInUserInfo() : null {
+        return null;
     }
 
     getUserToken() {

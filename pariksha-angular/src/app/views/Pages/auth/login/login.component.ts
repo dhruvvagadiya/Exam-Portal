@@ -6,6 +6,7 @@ import { usernameValidator } from 'src/app/core/helpers/validators';
 import { LoginModel } from 'src/app/core/models/User/login.model';
 import { AccountService } from 'src/app/core/services/account.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private router : Router, private accountService : AccountService, private authService : AuthService) {}
+  constructor(private fb: FormBuilder, private router : Router, private accountService : AccountService, private authService : AuthService, private userService : UserService) {}
 
   loginForm! : FormGroup;
   loginModel! : LoginModel;
@@ -41,6 +42,8 @@ export class LoginComponent implements OnInit {
           title: 'Signed in successfully',
           timer : 2000
         })
+
+        this.userService.userSubject.next(data.user);
 
         setTimeout(() => {
           this.router.navigateByUrl('/dashboard');

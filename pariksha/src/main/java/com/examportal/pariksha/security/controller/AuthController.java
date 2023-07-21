@@ -65,10 +65,10 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
+        User user = userRepository.findByUsername(loginRequest.getUsername()).get();
+
         return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getEmail(),
+                user,
                 roles));
     }
 
@@ -135,6 +135,6 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new JwtResponse(jwt, user.getId(), user.getUsername(), user.getEmail(), rolesAssigned));
+        return ResponseEntity.ok(new JwtResponse(jwt, user, rolesAssigned));
     }
 }
