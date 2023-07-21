@@ -1,52 +1,120 @@
-<div class="signup-page bg-light">
-    <div class="container">
-        <h3 class="mb-3">Sign up</h3>
-        <div class="bg-white shadow rounded">
-            <div class="row">
-                <div class="col-md-7 pe-0">
-                    <div class="form-left h-100 py-5 px-5">
+<!-- <div class="container"> -->
+    <div class="shadow rounded m-5">
+        <div class="row">
+            <div class="col-md-7 pe-0">
+                <div class="form-left py-5 px-5">
 
-                        <form>
-                            <!-- Username input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example1">Username</label>
-                                <input type="text" id="form2Example1" class="form-control"/>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" formControlName="firstName" />
+                                    <span *ngIf="registerForm.get('firstName')!.touched && registerForm.get('username')!.errors">
+                                        <div class="error-msg" *ngIf="registerForm.get('firstName')!.errors?.['required']">* First name is required.    </div>
+                                        <div class="error-msg" *ngIf="registerForm.get('firstName')!.errors?.['maxlength']">* First name should be less than 30 characters. </div>
+                                    </span>
+                                </div>
                             </div>
-                          
-                            <!-- Password input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example2">Password</label>
-                                <input type="password" id="form2Example2" class="form-control" />
+                            <div class="col-md-6">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" formControlName="lastName" />
+                                    <span *ngIf="registerForm.get('lastName')!.touched && registerForm.get('lastName')!.errors">
+                                        <div class="error-msg" *ngIf="registerForm.get('lastName')!.errors?.['required']">* Last name is required.    </div>
+                                        <div class="error-msg" *ngIf="registerForm.get('lastName')!.errors?.['maxlength']">* Last name should be less than 30 characters. </div>
+                                    </span>
+                                </div>
                             </div>
-                          
-                            <!-- 2 column grid layout for inline styling -->
-                            <div class="row mb-4">
-                          
-                              <div class="col">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" placeholder="99999-99999" formControlName="mobile" />
+                                    <span *ngIf="registerForm.get('mobile')!.touched && registerForm.get('mobile')!.errors">
+                                        <div class="error-msg" *ngIf="registerForm.get('mobile')!.errors?.['required'] || registerForm.get('mobile')!.errors?.['mobileReg']">* Please enter valid mobile number. </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Gender</label>
+                                <div class="form-control border-0">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="inlineRadio1" checked value=0>
+                                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="inlineRadio2" value=1>
+                                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control" formControlName="email" />
+                            <div class="error-msg" *ngIf="registerForm.get('email')!.touched && registerForm.get('email')!.errors?.['required']">* Please enter valid email address.</div>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" formControlName="username" />
+                            <span *ngIf="registerForm.get('username')!.touched && registerForm.get('username')!.errors">
+                                <div class="error-msg" *ngIf="registerForm.get('username')!.errors?.['required']">* Username is required.    </div>
+                                <div class="error-msg" *ngIf="registerForm.get('username')!.errors?.['regex']">* Username must start with an alphabet. </div>
+                                <div class="error-msg" *ngIf="registerForm.get('username')!.errors?.['regex']">* All other characters can be alphabets, numbers or an underscore. </div>
+                            </span>
+
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" formControlName="password" />
+                            <span *ngIf="registerForm.get('password')!.touched && registerForm.get('username')!.errors">
+                                <div class="error-msg" *ngIf="registerForm.get('password')!.errors?.['required']">* Password is required.    </div>
+                                <div class="error-msg" *ngIf="registerForm.get('password')!.errors?.['minlength'] || registerForm.get('password')!.errors?.['minlength']">* Password must be in range 6 to 30. </div>
+                            </span>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="text" class="form-control" formControlName="confirmPassword"/>
+                            <div class="error-msg" *ngIf="registerForm.get('confirmPassword')!.touched  && registerForm!.errors?.['passwordMatch']">* Passwords does not match.</div>
+                        </div>
+
+                        <!-- 2 column grid layout for inline styling -->
+                        <div class="row mb-4">
+
+                            <div class="col">
                                 <!-- Simple link -->
-                                <a href="#!">Forgot password?</a>
-                              </div>
+                                <a href="#">Forgot password?</a>
                             </div>
-                          
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-4" >Sign in</button>
-                          
-                            <!-- Register buttons -->
-                            <div class="text-center">
-                              <p>Already a member? <a [routerLink]="'../login'">Login</a></p>
-                            </div>
-                          </form>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4"
+                        [disabled]="registerForm.invalid">Sign up</button>
+
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>Already a member? <a [routerLink]="'../login'">Login</a></p>
+                        </div>
+                    </form>
 
 
-                    </div>
                 </div>
-                <div class="col-md-5 ps-0 d-none d-md-block">
-                    <div class="form-right h-100 bg-primary text-white text-center pt-5">
-                        <i class="bi bi-bootstrap"></i>
-                        <h2 class="fs-1">Create an account!</h2>
-                    </div>
+            </div>
+            <div class="col-md-5 ps-0 d-none d-md-block">
+                <div class="form-right h-100 bg-primary text-white text-center pt-5">
+                    <i class="bi bi-bootstrap"></i>
+                    <h2 class="fs-1">Create an account!</h2>
                 </div>
             </div>
         </div>
     </div>
-</div>
+<!-- </div> -->

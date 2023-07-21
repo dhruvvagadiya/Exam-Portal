@@ -1,6 +1,6 @@
 package com.examportal.pariksha.repo;
 
-import com.examportal.pariksha.models.ERole;
+import com.examportal.pariksha.models.helpers.ERole;
 import com.examportal.pariksha.models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

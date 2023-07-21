@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { toast } from 'src/app/core/helpers/swalHelp';
+import { usernameValidator } from 'src/app/core/helpers/validators';
 import { LoginModel } from 'src/app/core/models/User/login.model';
 import { AccountService } from 'src/app/core/services/account.service';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
     };
 
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, this.usernameValidator(/^[A-Za-z][A-Za-z0-9_]{5,29}$/)] ],
+      username: ['', [Validators.required, usernameValidator()] ],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]]
     });
   }
@@ -46,14 +47,13 @@ export class LoginComponent implements OnInit {
         }, 2000);
 
       })
-    });
-  }
-
-
-  usernameValidator (regex : RegExp): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const valid = regex.test(control.value);
-      return valid ? null : {regex: {value: control.value}};
-    };
+    },
+    (err => {
+      toast.error.fire({
+        title: "Something went wrong!",
+        timer : 2000
+      })
+    })
+    );
   }
 }

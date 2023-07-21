@@ -1,10 +1,6 @@
 package com.examportal.pariksha.security.payload.request;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
-import java.util.Set;
+import jakarta.validation.constraints.*;
 
 public class SignupRequest {
     @NotBlank
@@ -28,7 +24,21 @@ public class SignupRequest {
     @Size(min = 6, max = 40)
     private String password;
 
-    private Set<String> role;
+    @NotBlank
+    @Size(min = 10, max = 10, message = "Please enter valid mobile number")
+    private String mobile;
+
+    @Min(value = 0)
+    @Max(value = 1)
+    private int gender;
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -70,11 +80,11 @@ public class SignupRequest {
         this.password = password;
     }
 
-    public Set<String> getRole() {
-        return this.role;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setRole(Set<String> role) {
-        this.role = role;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }

@@ -1,5 +1,6 @@
 package com.examportal.pariksha.models;
 
+import com.examportal.pariksha.models.helpers.ERole;
 import jakarta.persistence.*;
 
 @Entity

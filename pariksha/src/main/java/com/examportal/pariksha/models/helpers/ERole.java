@@ -1,4 +1,4 @@
-package com.examportal.pariksha.models;
+package com.examportal.pariksha.models.helpers;
 
 public enum ERole {
     ROLE_USER,

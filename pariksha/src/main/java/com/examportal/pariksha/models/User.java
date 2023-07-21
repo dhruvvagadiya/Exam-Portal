@@ -1,9 +1,7 @@
 package com.examportal.pariksha.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,7 +29,6 @@ public class User {
     private String email;
 
     @NotBlank
-    @Size(max = 30, min = 6)
     private String password;
 
     @NotBlank
@@ -41,6 +38,14 @@ public class User {
     @NotBlank
     @Size(max = 30)
     private String lastname;
+
+    @NotBlank
+    @Size(min = 10, max = 10, message = "Please enter valid mobile number")
+    private String mobile;
+
+    @Min(value = 0)
+    @Max(value = 1)
+    private int gender;
 
     private Date createdAt = new Date();
 
@@ -56,12 +61,14 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, String firstName, String lastName) {
+    public User(String username, String email, String password, String firstName, String lastName, String mobile, int gender) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstname = firstName;
         this.lastname = lastName;
+        this.mobile = mobile;
+        this.gender = gender;
     }
 
     public int getId() {
@@ -96,22 +103,6 @@ public class User {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstname;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstname = firstName;
-    }
-
-    public String getLastName() {
-        return lastname;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastname = lastName;
-    }
-
     public Set<Role> getRoles() {
         return roles;
     }
@@ -134,5 +125,29 @@ public class User {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 }

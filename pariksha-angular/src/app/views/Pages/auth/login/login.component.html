@@ -10,7 +10,11 @@
                             <!-- Username input -->
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form2Example1">Username</label>
-                                <input type="text" id="form2Example1" class="form-control" formControlName="username" [(ngModel)]="loginModel.username"/>
+
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                                    <input type="text" class="form-control" placeholder="Username" formControlName="username" [(ngModel)]="loginModel.username">
+                                </div>
 
                                 <div *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.touched || loginForm.get('username')?.dirty)">
                                     <div class="error-msg" *ngIf="loginForm.get('username')!.errors?.['required']">* Username is required.    </div>
@@ -22,7 +26,11 @@
                             <!-- Password input -->
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form2Example2">Password</label>
-                                <input type="password" id="form2Example2" class="form-control" [(ngModel)]="loginModel.password" formControlName="password"/>
+
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="loginModel.password" formControlName="password">
+                                  </div>
 
                                 <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)">
                                     <div class="error-msg" *ngIf="loginForm.get('password')!.errors?.['required']">* Password is required.    </div>
@@ -42,7 +50,7 @@
                             </div>
                           
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-4" >Sign in</button>
+                            <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="loginForm.invalid">Sign in</button>
                           
                             <!-- Register buttons -->
                             <div class="text-center">
