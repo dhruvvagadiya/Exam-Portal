@@ -67,9 +67,7 @@ public class AuthController {
 
         User user = userRepository.findByUsername(loginRequest.getUsername()).get();
 
-        return ResponseEntity.ok(new JwtResponse(jwt,
-                user,
-                roles));
+        return ResponseEntity.ok(new JwtResponse(jwt, roles));
     }
 
     @PostMapping("/signup")
@@ -135,6 +133,6 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new JwtResponse(jwt, user, rolesAssigned));
+        return ResponseEntity.ok(new JwtResponse(jwt, rolesAssigned));
     }
 }

@@ -7,13 +7,10 @@ import java.util.List;
 public class JwtResponse {
     private String token;
     private String type = "Bearer";
-
-    private User user;
     private List<String> roles;
 
-    public JwtResponse(String accessToken, User user, List<String> roles) {
+    public JwtResponse(String accessToken, List<String> roles) {
         this.token = accessToken;
-        this.user = user;
         this.roles = roles;
     }
 
@@ -31,14 +28,6 @@ public class JwtResponse {
 
     public void setTokenType(String tokenType) {
         this.type = tokenType;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public List<String> getRoles() {

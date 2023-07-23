@@ -6,6 +6,7 @@ import { checkPasswords, mobileValidator, usernameValidator } from 'src/app/core
 import { SignupModel } from 'src/app/core/models/User/signup.model';
 import { AccountService } from 'src/app/core/services/account.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   registerModel! : SignupModel
   registerForm! : FormGroup
 
-  constructor(private fb : FormBuilder, private accountService : AccountService, private authService : AuthService, private router : Router) { }
+  constructor(private fb : FormBuilder, private accountService : AccountService, private userService : UserService,private authService : AuthService, private router : Router) { }
 
   ngOnInit() {
 
@@ -56,6 +57,8 @@ export class RegisterComponent implements OnInit {
           title: 'User Registered successfully!',
           timer : 2000
         })
+
+        this.userService.getCurrentUser();
 
         setTimeout(() => {
           this.router.navigateByUrl('/dashboard');

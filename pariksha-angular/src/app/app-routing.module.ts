@@ -11,7 +11,6 @@ const routes : Routes = [
     {
       path :'',
       component : BaseComponent,
-      canActivate : [AuthGuard],
       children : [
         {
           path: 'home', 
@@ -27,7 +26,8 @@ const routes : Routes = [
         },
         {
           path : 'dashboard',
-          component : DashboardComponent
+          component : DashboardComponent,
+          canActivate : [AuthGuard]
         },
         { 
           path: '', redirectTo: 'home', pathMatch: 'full'

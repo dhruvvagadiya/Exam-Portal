@@ -26,8 +26,12 @@ export class AuthService {
         }
     }
 
-    getLoggedInUserInfo() : null {
-        return null;
+    getUsernameFromToken() {
+        var token = this.getUserToken();
+        if(token) {
+            let decoded = this.jwtHelper.decodeToken(token!);
+            return decoded.sub;   
+        }
     }
 
     getUserToken() {

@@ -1,7 +1,13 @@
 export interface User
 {
-    firstName?: string,
-    lastName?: string,
-    email?:string,
-    userName?: string
+    id: number,
+    firstName: string,
+    lastName: string,
+    email:string,
+    userName: string,
+    mobile:string,
+    gender:number,
+    createdAt?:Date,
+    updatedAt?:Date,
+    profileUrl?:string
 }

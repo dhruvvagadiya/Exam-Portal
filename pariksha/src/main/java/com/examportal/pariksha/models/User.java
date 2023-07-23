@@ -49,6 +49,8 @@ public class User {
     @Max(value = 1)
     private int gender;
 
+    private String profileUrl;
+
     private Date createdAt = new Date();
 
     private Date updatedAt = new Date();
@@ -152,5 +154,21 @@ public class User {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public String getProfileUrl() {
+        return profileUrl;
+    }
+
+    public void setProfileUrl(String profileUrl) {
+        this.profileUrl = profileUrl;
     }
 }

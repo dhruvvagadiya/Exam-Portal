@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { toast } from 'src/app/core/helpers/swalHelp';
 import { usernameValidator } from 'src/app/core/helpers/validators';
 import { LoginModel } from 'src/app/core/models/User/login.model';
+import { User } from 'src/app/core/models/User/user.model';
 import { AccountService } from 'src/app/core/services/account.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserService } from 'src/app/core/services/user.service';
@@ -38,12 +39,12 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(data.accessToken, data.roles[0], () => {
 
+        this.userService.getCurrentUser();
+        
         toast.success.fire({
           title: 'Signed in successfully',
           timer : 2000
         })
-
-        this.userService.userSubject.next(data.user);
 
         setTimeout(() => {
           this.router.navigateByUrl('/dashboard');
