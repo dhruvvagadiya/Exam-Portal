@@ -1,3 +1,47 @@
-.sidebar {
-    height: 75vh;
+.border-white {
+    border: 1px solid white;
+}
+.side-nav-content{
+    color: white;
+    width: 14.375rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+    margin-top: 0.625rem;
+}
+
+.nav-list {
+    list-style-type: none;
+    height: 100%;
+    padding: 0%;
+    margin-bottom: 0%;
+}
+
+.nav-list-item {
+    height: 3.125rem;
+    cursor: pointer;
+}
+
+.nav-list-open .nav-list-item:hover {
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 0.625rem;
+}
+
+.nav-icon {
+    font-size: 1.25rem;
+    height: 1.563rem;
+    width: 1.563rem;
+    margin-right: 0.938rem;
+    margin-left: 0.625rem;
+    text-align: center;
+    line-height: 1.563rem;
+}
+
+.nav-list-item span {
+    width: 10.625rem;
+    text-transform: capitalize;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }

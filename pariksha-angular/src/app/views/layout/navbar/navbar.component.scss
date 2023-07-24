@@ -1,4 +1,16 @@
-.profileImg{
-    max-width: 50px;
-    max-height: 50px;
+nav {
+    height: 100%;
+}
+
+.navbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.navbtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 30%;
 }

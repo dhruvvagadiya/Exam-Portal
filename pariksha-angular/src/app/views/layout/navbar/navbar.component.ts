@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { toast } from 'src/app/core/helpers/swalHelp';
 import { User } from 'src/app/core/models/User/user.model';
@@ -14,6 +14,9 @@ export class NavbarComponent implements OnInit{
   constructor(private userService: UserService, private authService : AuthService, private router : Router, private userrService : UserService){}
 
   user? : User;
+  showSidebar : boolean = false;
+
+  @Output() toggleSidebar = new EventEmitter<boolean>();
 
   ngOnInit(): void {
     this.userService.getUserSubject().subscribe((data) => {
@@ -24,6 +27,11 @@ export class NavbarComponent implements OnInit{
         this.user = undefined;
       }
     });
+  }
+
+  changeSidebar(){    
+    this.showSidebar = !this.showSidebar;
+    this.toggleSidebar.emit(this.showSidebar);
   }
 
   logout() {

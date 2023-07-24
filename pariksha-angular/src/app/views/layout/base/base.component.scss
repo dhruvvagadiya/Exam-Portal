@@ -1,0 +1,42 @@
+app-navbar {
+    position: fixed;
+    top:0px;
+    width: 100%;
+    height: 3.5rem;
+    z-index: 2;
+}
+
+main {
+    position: absolute;
+    top : 3.5rem;
+    width: 100%;
+    z-index: 1;
+}
+
+app-sidebar{
+    position: fixed;
+    left: 0rem;
+    width: 3.75rem;
+    height: calc(100vh - 3.5rem);
+    box-shadow: 0px 0px 0.625rem rgba(0,0,0,0.5);
+    border-top: 1px solid white;
+    overflow-x: hidden;
+    white-space: nowrap;
+    transition: width 200ms ease-in;
+}
+
+.app-side-nav-open {
+    width: 15.625rem;
+}
+
+.main-display-area {
+    position: absolute;
+    left: 3.75rem;
+    width: calc(100% - 3.75rem);
+    transition: left 200ms ease-in, width 200ms ease-in;
+}
+
+.display-area-shrink {
+    left: 15.625rem;
+    width: calc(100% - 15.625rem);
+}
