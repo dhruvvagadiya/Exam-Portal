@@ -1,11 +1,11 @@
 <div class="container-fluid g-0">
 
-    <app-navbar (toggleSidebar)="showSidebar = $event"></app-navbar>
+    <app-navbar></app-navbar>
 
     <main>
-        <app-sidebar class="bg-dark" [ngClass]="{'app-side-nav-open' : showSidebar}" [showSidebar]="showSidebar" *ngIf="user"></app-sidebar>
+        <app-sidebar class="bg-dark" *ngIf="user"></app-sidebar>
 
-        <div class="main-display-area p-3" [ngClass]="{'display-area-shrink' : showSidebar}">
+        <div [ngClass]="{'main-display-area p-3' : user}">
             <router-outlet></router-outlet>
         </div>
     </main>

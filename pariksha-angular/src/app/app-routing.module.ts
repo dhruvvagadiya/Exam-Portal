@@ -6,6 +6,7 @@ import { DashboardComponent } from './views/Pages/dashboard/dashboard.component'
 import { HomeComponent } from './views/Pages/home/home.component';
 import { AboutComponent } from './views/Pages/about/about.component';
 import { ContactComponent } from './views/Pages/contact/contact.component';
+import { QuizAttemptsComponent } from './views/pages/quiz-attempts/quiz-attempts.component';
 
 const routes : Routes = [
     {
@@ -27,6 +28,11 @@ const routes : Routes = [
         {
           path : 'dashboard',
           component : DashboardComponent,
+          canActivate : [AuthGuard]
+        },
+        {
+          path : 'quizattemps',
+          component : QuizAttemptsComponent,
           canActivate : [AuthGuard]
         },
         { 

@@ -8,7 +8,6 @@ export class AuthService {
     constructor(private jwtHelper: JwtHelper) { }
     
     login(token : string, role : string, callback : any) {
-        localStorage.setItem('isLoggedin', 'true');
         localStorage.setItem('ROLE', role);
         localStorage.setItem('USERTOKEN', token);
         if (callback) {
@@ -17,7 +16,6 @@ export class AuthService {
 
     }
     logout(callback : any) {
-        localStorage.removeItem('isLoggedin');
         localStorage.removeItem('USERTOKEN');
         localStorage.removeItem('ROLE');
 

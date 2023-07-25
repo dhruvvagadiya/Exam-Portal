@@ -10,11 +10,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './core/helpers/token.interceptor';
 import { AuthService } from './core/services/auth.service';
 import { UnauthorizedComponent } from './views/unauthorized/unauthorized.component';
+import { QuizAttemptsComponent } from './views/pages/quiz-attempts/quiz-attempts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UnauthorizedComponent,
+    QuizAttemptsComponent,
   ],
   imports: [
     BrowserModule,

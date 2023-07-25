@@ -11,17 +11,12 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'pariksha-angular';
 
-  constructor(private authService: AuthService, private userService : UserService, private router : Router){}
+  constructor(private authService: AuthService, private userService : UserService){}
 
   ngOnInit(){
     var username = this.authService.getUsernameFromToken();
     if(username) {
       this.userService.getCurrentUser();
-      this.router.navigate(['/dashboard']);
-    }
-    else {
-      this.router.navigate(['/home']);
-      
     }
   }
 }

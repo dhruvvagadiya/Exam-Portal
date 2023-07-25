@@ -7,12 +7,14 @@ import { LoginModel } from '../models/User/login.model';
 export class AccountService {
 
     constructor(private http : HttpClient) { }
+
+    apiUrl = environment.apiUrl + '/auth';
     
     login(loginModel : LoginModel) {
-        return this.http.post(environment.apiUrl + '/auth/login', loginModel);
+        return this.http.post(this.apiUrl + '/login', loginModel);
     }
 
     register(registerModel : any){
-        return this.http.post(environment.apiUrl + '/auth/signup', registerModel);
+        return this.http.post(this.apiUrl + '/signup', registerModel);
     }
 }

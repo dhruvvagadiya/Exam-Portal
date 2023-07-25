@@ -4,8 +4,8 @@
 .side-nav-content{
     color: white;
     width: 14.375rem;
-    margin-left: 0.625rem;
-    margin-right: 0.625rem;
+    margin-left: 0.3125rem;
+    margin-right: 0.3125rem;
     margin-top: 0.625rem;
 }
 
@@ -21,7 +21,12 @@
     cursor: pointer;
 }
 
-.nav-list-open .nav-list-item:hover {
+.nav-category-item {
+    height: 2rem;
+    cursor: pointer;
+}
+
+.nav-list-item:hover {
     background-color: rgba(255,255,255,0.3);
     border-radius: 0.625rem;
 }

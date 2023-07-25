@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../models/User/user.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'environment/environment';
 import { AuthService } from './auth.service';
 
@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 export class UserService {
     constructor(private http : HttpClient, private authService : AuthService) { }
     
+    apiUrl = environment.apiUrl + '/user';
     userSubject = new BehaviorSubject<User | null>(null);
 
     getUserSubject(){
@@ -27,6 +28,8 @@ export class UserService {
     }
 
     getUserByUsername(username : string){ 
-        return this.http.get<User>(environment.apiUrl + '/user?username=' + username);
+        return this.http.get<User>(this.apiUrl, {
+            params : new HttpParams().append('username', username)
+        });
     }
 }

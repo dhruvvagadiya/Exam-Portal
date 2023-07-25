@@ -1,10 +1,18 @@
 <div class="side-nav-content">
-    <ul class="nav-list" [ngClass]="{'nav-list-open' : showSidebar}">
+    <ul class="nav-list">
         <li class="nav-list-item d-flex align-items-center" *ngFor="let item of menu" [routerLink]="[item.route]">
             <i class="nav-icon {{item.icon}}"></i>
             <span>
                 <a>{{item.name}}</a>
             </span>
         </li>
+        <ul class="ms-4">
+            <li class="nav-category-item">
+                All
+            </li>
+            <li class="nav-category-item">
+                Hello2
+            </li>
+        </ul>
     </ul>
 </div>

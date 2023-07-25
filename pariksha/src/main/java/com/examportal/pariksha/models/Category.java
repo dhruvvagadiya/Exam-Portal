@@ -13,7 +13,7 @@ public class Category {
     private int id;
 
     @NotBlank
-    @Size(max = 10)
+    @Size(max = 50)
     private String name;
 
     public Category() {
