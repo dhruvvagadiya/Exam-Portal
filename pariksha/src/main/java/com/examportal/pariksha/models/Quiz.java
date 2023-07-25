@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "quiz")
@@ -35,6 +36,10 @@ public class Quiz {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
+
+    @OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Questions> questions;
+
 
     public Quiz() {
     }
@@ -108,5 +113,13 @@ public class Quiz {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Questions> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Questions> questions) {
+        this.questions = questions;
     }
 }
