@@ -16,6 +16,7 @@ public class QuestionOptions {
     private String content;
 
     @ManyToOne
+    @JsonIgnore
     private Questions question;
 
     @Column(columnDefinition = "INT DEFAULT 0")
@@ -53,5 +54,13 @@ public class QuestionOptions {
 
     public void setIsAnswer(int isAnswer) {
         this.isAnswer = isAnswer;
+    }
+
+    public Questions getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Questions question) {
+        this.question = question;
     }
 }

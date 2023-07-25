@@ -1,4 +1,4 @@
-package com.examportal.pariksha.serviceImpl;
+package com.examportal.pariksha.service.serviceImpl;
 
 import com.examportal.pariksha.models.Category;
 import com.examportal.pariksha.repo.CategoryRepository;

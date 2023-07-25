@@ -1,5 +1,7 @@
 package com.examportal.pariksha.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -23,15 +25,12 @@ public class Quiz {
     @Column(columnDefinition = "INT DEFAULT 1")
     private int isActive;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date createdAt = new Date();
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Date updatedAt;
+    private Date updatedAt = new Date();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = {"id", "email", "mobile", "username", "gender", "profileUrl", "createdAt", "updatedAt"})
     private User createdBy;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -44,10 +43,9 @@ public class Quiz {
     public Quiz() {
     }
 
-    public Quiz(String title, String description, int isActive, User createdBy) {
+    public Quiz(String title, String description, User createdBy) {
         this.title = title;
         this.description = description;
-        this.isActive = isActive;
         this.createdBy = createdBy;
     }
 

@@ -52,12 +52,8 @@ public class User {
 
     private String profileUrl;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date createdAt = new Date();
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date updatedAt = new Date();
 
     @JsonIgnore

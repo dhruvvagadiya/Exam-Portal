@@ -1,4 +1,4 @@
-package com.examportal.pariksha.serviceImpl;
+package com.examportal.pariksha.service.serviceImpl;
 
 import org.springframework.stereotype.Service;
 

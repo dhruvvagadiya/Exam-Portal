@@ -1,5 +1,6 @@
 package com.examportal.pariksha.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -20,14 +21,13 @@ public class Questions {
     private String description;
 
     @ManyToOne
+    @JsonIgnore
     private Quiz quiz;
 
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<QuestionOptions> questionOptionsList;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Date createdAt;
+    private Date createdAt = new Date();
 
     public Questions() {
     }

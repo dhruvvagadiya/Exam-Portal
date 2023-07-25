@@ -1,4 +1,4 @@
-package com.examportal.pariksha.serviceImpl;
+package com.examportal.pariksha.service.serviceImpl;
 
 import com.examportal.pariksha.repo.QuestionsRepository;
 import com.examportal.pariksha.security.payload.response.MessageResponse;
