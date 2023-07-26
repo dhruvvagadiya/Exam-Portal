@@ -60,6 +60,7 @@ public class SecurityConfig  {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/category/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/quiz/**").hasRole("ADMIN")
                 .requestMatchers("/all/**").permitAll()
                 .anyRequest().authenticated();
 

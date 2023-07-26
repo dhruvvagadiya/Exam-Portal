@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -15,7 +16,7 @@ public class QuestionServiceImpl implements QuestionService {
     private QuestionsRepository questionsRepository;
 
     @Override
-    public ResponseEntity<?> getAllQuestionsOfQuiz(int quizId) {
+    public ResponseEntity<?> getAllQuestionsOfQuiz(@RequestParam  int quizId) {
         if(quizId < 1){
             return new ResponseEntity<>(new MessageResponse("Invalid Request!"), HttpStatusCode.valueOf(400));
         }

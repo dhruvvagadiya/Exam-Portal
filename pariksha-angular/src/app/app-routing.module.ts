@@ -7,6 +7,7 @@ import { HomeComponent } from './views/Pages/home/home.component';
 import { AboutComponent } from './views/Pages/about/about.component';
 import { ContactComponent } from './views/Pages/contact/contact.component';
 import { QuizAttemptsComponent } from './views/pages/quiz-attempts/quiz-attempts.component';
+import { QuizComponent } from './views/pages/quiz/quiz.component';
 
 const routes : Routes = [
     {
@@ -33,6 +34,11 @@ const routes : Routes = [
         {
           path : 'quizattemps',
           component : QuizAttemptsComponent,
+          canActivate : [AuthGuard]
+        },
+        {
+          path : 'quiz/:id',
+          component : QuizComponent,
           canActivate : [AuthGuard]
         },
         { 

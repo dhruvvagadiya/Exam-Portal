@@ -11,12 +11,14 @@ import { TokenInterceptor } from './core/helpers/token.interceptor';
 import { AuthService } from './core/services/auth.service';
 import { UnauthorizedComponent } from './views/unauthorized/unauthorized.component';
 import { QuizAttemptsComponent } from './views/pages/quiz-attempts/quiz-attempts.component';
+import { QuizComponent } from './views/pages/quiz/quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UnauthorizedComponent,
     QuizAttemptsComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,

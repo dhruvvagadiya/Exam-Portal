@@ -1,18 +1,26 @@
 <div class="side-nav-content">
     <ul class="nav-list">
-        <li class="nav-list-item d-flex align-items-center" *ngFor="let item of menu" [routerLink]="[item.route]">
-            <i class="nav-icon {{item.icon}}"></i>
-            <span>
-                <a>{{item.name}}</a>
-            </span>
+        <li class="nav-list-item d-flex align-items-center" routerLink="dashboard">
+            <i class="nav-icon fa-solid fa-house"></i>
+            <span>Home</span>
         </li>
-        <ul class="ms-4">
-            <li class="nav-category-item">
+        <li class="nav-list-item d-flex align-items-center" routerLink="quizattemps">
+            <i class="nav-icon fa-solid fa-bookmark"></i>
+            <span>Quiz Attemps</span>
+        </li>
+        <li class="nav-list-item d-flex align-items-center" (click)="showCategories = !showCategories">
+            <i class="nav-icon fa-solid fa-thumbtack"></i>
+            <span>Categories</span>
+        </li>
+        <ul class="ms-4" *ngIf="showCategories">
+            <li class="nav-category-item" [routerLink]="'quiz/0'">
                 All
             </li>
-            <li class="nav-category-item">
-                Hello2
+            <li class="nav-category-item" *ngFor="let category of categories" [routerLink]="['quiz', category.id]">
+                {{category.name}}
             </li>
         </ul>
+
+
     </ul>
 </div>

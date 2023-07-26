@@ -3,9 +3,13 @@ package com.examportal.pariksha.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "question_options")
+@Getter
+@Setter
 public class QuestionOptions {
 
     @Id
@@ -30,37 +34,5 @@ public class QuestionOptions {
         this.content = content;
         this.question = question;
         this.isAnswer = isAnswer;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public int getIsAnswer() {
-        return isAnswer;
-    }
-
-    public void setIsAnswer(int isAnswer) {
-        this.isAnswer = isAnswer;
-    }
-
-    public Questions getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(Questions question) {
-        this.question = question;
     }
 }

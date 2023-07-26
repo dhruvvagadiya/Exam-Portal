@@ -12,7 +12,7 @@ export const menu = [
     {
         name : "Categories",
         icon : "fa-solid fa-thumbtack",
-        route : "categories/all"
+        route : "categories/all",
     }
 ]
 

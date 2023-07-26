@@ -46,7 +46,6 @@
     text-transform: capitalize;
 }
 
-a {
-    text-decoration: none;
-    color: white;
+.nav-category-item:hover{
+    text-decoration: underline;
 }
