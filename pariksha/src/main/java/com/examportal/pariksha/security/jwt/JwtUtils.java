@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.stream.Collectors;
 
 @Component
 public class JwtUtils {
@@ -25,8 +26,6 @@ public class JwtUtils {
     // This is used for generating JwtTokem.
     public String generateJwtToken(Authentication authentication) {
 
-
-
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
         System.out.println(Integer.valueOf(jwtExpirationMs));
 
@@ -34,6 +33,9 @@ public class JwtUtils {
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + Integer.parseInt(jwtExpirationMs)))
+//                .claim("roles", authentication.getAuthorities().stream()
+//                        .map(item -> item.getAuthority())
+//                        .collect(Collectors.toList()) )
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }

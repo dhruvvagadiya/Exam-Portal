@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.examportal.pariksha.models.helpers.ERole;
-import com.examportal.pariksha.models.Role;
-import com.examportal.pariksha.models.User;
+import com.examportal.pariksha.user.helpers.ERole;
+import com.examportal.pariksha.user.Role;
+import com.examportal.pariksha.user.User;
 import com.examportal.pariksha.security.payload.request.LoginRequest;
 import com.examportal.pariksha.security.payload.request.SignupRequest;
 import com.examportal.pariksha.security.payload.response.JwtResponse;
 import com.examportal.pariksha.security.payload.response.MessageResponse;
-import com.examportal.pariksha.repo.RoleRepository;
-import com.examportal.pariksha.repo.UserRepository;
+import com.examportal.pariksha.user.RoleRepository;
+import com.examportal.pariksha.user.UserRepository;
 import com.examportal.pariksha.security.jwt.JwtUtils;
 import com.examportal.pariksha.security.services.UserDetailsImpl;
 
@@ -64,8 +64,6 @@ public class AuthController {
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
-
-        User user = userRepository.findByUsername(loginRequest.getUsername()).get();
 
         return ResponseEntity.ok(new JwtResponse(jwt, roles));
     }

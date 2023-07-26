@@ -1,7 +1,7 @@
 package com.examportal.pariksha.security.services;
 
-import com.examportal.pariksha.models.User;
-import com.examportal.pariksha.repo.UserRepository;
+import com.examportal.pariksha.user.User;
+import com.examportal.pariksha.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

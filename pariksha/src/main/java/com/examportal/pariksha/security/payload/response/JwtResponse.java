@@ -1,7 +1,5 @@
 package com.examportal.pariksha.security.payload.response;
 
-import com.examportal.pariksha.models.User;
-
 import java.util.List;
 
 public class JwtResponse {

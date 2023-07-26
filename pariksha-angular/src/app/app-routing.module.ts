@@ -8,6 +8,7 @@ import { AboutComponent } from './views/Pages/about/about.component';
 import { ContactComponent } from './views/Pages/contact/contact.component';
 import { QuizAttemptsComponent } from './views/pages/quiz-attempts/quiz-attempts.component';
 import { QuizComponent } from './views/pages/quiz/quiz.component';
+import { Role } from './core/helpers/role.enum';
 
 const routes : Routes = [
     {
@@ -29,17 +30,20 @@ const routes : Routes = [
         {
           path : 'dashboard',
           component : DashboardComponent,
-          canActivate : [AuthGuard]
+          canActivate : [AuthGuard],
+          data : {role : [Role.USER] }
         },
         {
           path : 'quizattemps',
           component : QuizAttemptsComponent,
-          canActivate : [AuthGuard]
+          canActivate : [AuthGuard],
+          data : {role : [Role.USER] }
         },
         {
           path : 'quiz/:id',
           component : QuizComponent,
-          canActivate : [AuthGuard]
+          canActivate : [AuthGuard],
+          data : {role : [Role.USER] }
         },
         { 
           path: '', redirectTo: 'home', pathMatch: 'full'
