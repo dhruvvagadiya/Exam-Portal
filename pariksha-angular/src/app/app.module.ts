@@ -13,6 +13,7 @@ import { UnauthorizedComponent } from './views/unauthorized/unauthorized.compone
 import { QuizAttemptsComponent } from './views/pages/quiz-attempts/quiz-attempts.component';
 import { QuizComponent } from './views/pages/quiz/quiz.component';
 import { AdminModule } from './views/admin/admin.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AdminModule } from './views/admin/admin.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     AdminModule,
-    LayoutModule
+    LayoutModule,
+    NgbModule
   ],
   providers: [
     AuthGuard,

@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h4 class="modal-title" class="fs-4" style="font-weight: bolder;">{{ category.id !== 0 ? 'Update Category' : 'Create Category' }}</h4>
+    <span (click)="modal.close()"><i class="fa-solid fa-xmark"></i></span>
+    <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.close()"></button> -->
+</div>
+<div class="modal-body">
+    <form #categoryForm ="ngForm" (ngSubmit)="onSave.emit(category); modal.close()">
+
+        <input type="text" hidden [(ngModel)]="category.id" name="id">
+
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+            <label class="form-label">Name <span class="text-danger">*</span></label>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="name" required maxlength="50" [(ngModel)]="category.name">
+            </div>
+        </div>
+      
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <label class="form-label">Description <span class="text-danger">*</span></label>
+
+            <div class="input-group mb-3">
+                <textarea type="password" class="form-control" name="description" maxlength="100" required [(ngModel)]="category.description" placeholder="Please give a short description of category!"> </textarea>
+            </div>
+            
+        </div>
+        
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" [disabled]="!categoryForm.form.valid">Save</button>
+            <button type="button" class="btn btn-danger" (click)="modal.close()">Cancel</button>
+        </div>
+
+      </form>
+
+</div>

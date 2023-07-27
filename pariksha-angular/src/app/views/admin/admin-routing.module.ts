@@ -6,6 +6,7 @@ import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { CategoryComponent } from './category/category.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { QuizComponent } from '../pages/quiz/quiz.component';
+import { UpsertCategoryComponent } from './category/upsert-category/upsert-category.component';
 
 const routes : Routes = [
     {
@@ -20,6 +21,10 @@ const routes : Routes = [
             {
                 path : 'category',
                 component : CategoryComponent
+            },
+            {
+                path : 'upsert-category',
+                component : UpsertCategoryComponent
             },
             {
                 path : 'manage',

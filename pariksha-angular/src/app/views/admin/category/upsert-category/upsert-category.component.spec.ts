@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CategoryModalComponent } from './category-modal.component';
+import { UpsertCategoryComponent } from './upsert-category.component';
 
-describe('CategoryModalComponent', () => {
-  let component: CategoryModalComponent;
-  let fixture: ComponentFixture<CategoryModalComponent>;
+describe('UpsertCategoryComponent', () => {
+  let component: UpsertCategoryComponent;
+  let fixture: ComponentFixture<UpsertCategoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CategoryModalComponent ]
+      declarations: [ UpsertCategoryComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CategoryModalComponent);
+    fixture = TestBed.createComponent(UpsertCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

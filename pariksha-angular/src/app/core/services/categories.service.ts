@@ -12,4 +12,8 @@ export class CategoryService {
     getCategories() {
         return this.http.get<Category []>(this.apiUrl + '/all');
     }
+
+    upsertCategory(category : Category) {
+        return this.http.post<Category>(this.apiUrl, category);
+    }
 }
