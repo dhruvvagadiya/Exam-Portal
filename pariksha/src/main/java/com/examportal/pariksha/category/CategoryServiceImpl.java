@@ -30,6 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
             else {
                 Category updateObj = update.get();
                 updateObj.setName(category.getName());
+                updateObj.setDescription(category.getDescription());
                 category = categoryRepo.save(updateObj);
             }
         }

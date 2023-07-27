@@ -22,10 +22,13 @@ export class SidebarComponent implements OnInit {
   constructor(private categoryService : CategoryService, private authService : AuthService) {}
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe(data => {
-      this.categories = data;
-    });
-
     this.isAdmin = this.authService.getUserRole() === Role.ADMIN ? true : false;
+
+    if(!this.isAdmin) {
+      this.categoryService.getCategories().subscribe(data => {
+        this.categories = data;
+      });
+    }
+
   }
 }

@@ -20,10 +20,16 @@ public class Category {
     @Size(max = 50)
     private String name;
 
+
+    @NotBlank
+    @Size(max = 100)
+    private String description;
+
     public Category() {
     }
 
-    public Category(String name) {
+    public Category(String name, String description) {
         this.name = name;
+        this.description = description;
     }
 }
