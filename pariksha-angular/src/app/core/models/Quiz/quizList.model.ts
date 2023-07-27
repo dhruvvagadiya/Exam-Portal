@@ -1,7 +1,10 @@
+import { Category } from "../category/category.model";
+
 export interface QuizList {
     id : number,
     title : string,
     description : string,
     numberOfQuestions : number,
-    maxMarks : number
+    marksPerQuestion : number,
+    category : Category
 }

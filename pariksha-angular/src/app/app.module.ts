@@ -10,8 +10,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './core/helpers/token.interceptor';
 import { AuthService } from './core/services/auth.service';
 import { UnauthorizedComponent } from './views/unauthorized/unauthorized.component';
-import { QuizAttemptsComponent } from './views/pages/quiz-attempts/quiz-attempts.component';
-import { QuizComponent } from './views/pages/quiz/quiz.component';
 import { AdminModule } from './views/admin/admin.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -19,15 +17,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     UnauthorizedComponent,
-    QuizAttemptsComponent,
-    QuizComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AdminModule,
     LayoutModule,
     NgbModule
   ],

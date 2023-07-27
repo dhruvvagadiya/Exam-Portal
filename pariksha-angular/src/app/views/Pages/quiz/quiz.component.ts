@@ -19,7 +19,7 @@ export class QuizComponent implements OnInit {
     this.route.params.subscribe((data : Params) => {
       this.categoryId = data["id"];
 
-      this.quizService.getQuizByCategoyId(this.categoryId).subscribe((data) => {
+      this.quizService.getQuizByCategoryId(this.categoryId).subscribe((data) => {
         this.quizList = data;
       });
 

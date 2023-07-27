@@ -10,7 +10,7 @@ export class QuizService {
 
     apiUrl = environment.apiUrl + '/quiz'
     
-    getQuizByCategoyId (id : number) {
+    getQuizByCategoryId (id : number) {        
         return this.http.get<QuizList []>(this.apiUrl + '/getByCategory', {
             params : new HttpParams().append('category', id)
         });

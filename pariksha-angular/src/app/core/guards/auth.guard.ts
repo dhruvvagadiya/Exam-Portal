@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
 
         //now check if user has required roles
         const reqRoles : string[] = route.data['role'];
-
+        
         let isAuthenticated = false;
         reqRoles.forEach((e) => {
           if(e === role) {

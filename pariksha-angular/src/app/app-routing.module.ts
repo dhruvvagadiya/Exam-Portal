@@ -6,8 +6,8 @@ import { DashboardComponent } from './views/Pages/dashboard/dashboard.component'
 import { HomeComponent } from './views/Pages/home/home.component';
 import { AboutComponent } from './views/Pages/about/about.component';
 import { ContactComponent } from './views/Pages/contact/contact.component';
-import { QuizAttemptsComponent } from './views/pages/quiz-attempts/quiz-attempts.component';
-import { QuizComponent } from './views/pages/quiz/quiz.component';
+import { QuizAttemptsComponent } from './views/Pages/quiz-attempts/quiz-attempts.component';
+import { QuizComponent } from './views/Pages/quiz/quiz.component';
 import { Role } from './core/helpers/role.enum';
 
 const routes : Routes = [
@@ -29,6 +29,8 @@ const routes : Routes = [
         },
         {
           path : 'admin',
+          canActivate : [AuthGuard],
+          data : {role : [Role.ADMIN] },
           loadChildren: () => import('./views/admin/admin.module').then(m => m.AdminModule)
         },
         {
@@ -57,7 +59,8 @@ const routes : Routes = [
     {
       path : 'auth',
       loadChildren : () => import('./views/Pages/auth/auth.module').then(m => m.AuthModule)
-    }
+    },
+    { path : '**', redirectTo : 'home'}
 ]
 
 @NgModule({
