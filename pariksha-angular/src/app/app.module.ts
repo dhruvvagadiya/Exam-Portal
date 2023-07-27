@@ -12,19 +12,21 @@ import { AuthService } from './core/services/auth.service';
 import { UnauthorizedComponent } from './views/unauthorized/unauthorized.component';
 import { QuizAttemptsComponent } from './views/pages/quiz-attempts/quiz-attempts.component';
 import { QuizComponent } from './views/pages/quiz/quiz.component';
+import { AdminModule } from './views/admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     UnauthorizedComponent,
     QuizAttemptsComponent,
-    QuizComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AdminModule,
     LayoutModule
   ],
   providers: [

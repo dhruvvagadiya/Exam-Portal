@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/core/helpers/role.enum';
 import { toast } from 'src/app/core/helpers/swalHelp';
 import { usernameValidator } from 'src/app/core/helpers/validators';
 import { LoginModel } from 'src/app/core/models/User/login.model';
@@ -47,7 +48,8 @@ export class LoginComponent implements OnInit {
         })
 
         setTimeout(() => {
-          this.router.navigateByUrl('/dashboard');
+          if(this.authService.getUserRole() === Role.USER) this.router.navigateByUrl('/dashboard');
+          else this.router.navigateByUrl('/admin/dashboard');
         }, 2000);
 
       })

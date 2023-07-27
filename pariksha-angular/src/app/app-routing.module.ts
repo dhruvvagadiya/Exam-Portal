@@ -28,6 +28,10 @@ const routes : Routes = [
           component : ContactComponent
         },
         {
+          path : 'admin',
+          loadChildren: () => import('./views/admin/admin.module').then(m => m.AdminModule)
+        },
+        {
           path : 'dashboard',
           component : DashboardComponent,
           canActivate : [AuthGuard],

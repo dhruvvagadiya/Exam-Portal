@@ -3,6 +3,7 @@ import { Role } from 'src/app/core/helpers/role.enum';
 import { Category } from 'src/app/core/models/category/category.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CategoryService } from 'src/app/core/services/categories.service';
+import { adminMenu } from './menu.list';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,6 +17,7 @@ export class SidebarComponent implements OnInit {
   isAdmin : boolean = false;
 
   categories : Category [] = [];
+  adminMenu = adminMenu;
 
   constructor(private categoryService : CategoryService, private authService : AuthService) {}
 
