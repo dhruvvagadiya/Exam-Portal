@@ -15,4 +15,8 @@ export class QuizService {
             params : new HttpParams().append('category', id)
         });
     }
+
+    updateBasicQuizDetails(quizList : QuizList) {
+        return this.http.post<QuizList>(this.apiUrl + '/update', quizList);
+    }
 } 

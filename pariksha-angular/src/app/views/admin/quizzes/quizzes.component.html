@@ -1,24 +1,46 @@
-<div class="container">
+<div class="container m-3">
+
+    <div class="mb-3 row">
+        <div class="col-md-9">
+            <h4 style="font-weight: bolder;">Quiz List</h4>
+        </div>
+        <div class="col">
+            <div class="d-flex align-items-center">
+                <select class="form-select me-2" name="category" (change)="onCategoryChange($event)">
+                    <option disabled selected>Filter by Category</option>
+                    <option value="-1">None</option>
+                    <option [value]="item.id" *ngFor="let item of categoryList">{{ item.name }}</option>
+                </select>
+                <span>
+                    <i class="fs-4 fa-solid fa-filter"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
-                <th scope="col">Title</th>
+                <th scope="col" >Title</th>
                 <th scope="col">Category</th>
                 <th scope="col">Number of questions</th>
                 <th scope="col">Marks Per Question</th>
+                <th scope="col">Data</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let quiz of filteredQuizzes">
+            <tr *ngFor="let quiz of filteredQuizzes; let i=index">
                 <td>{{quiz.title}}</td>
                 <td>{{quiz.category.name}}</td>
                 <td>{{quiz.numberOfQuestions}}</td>
                 <td>{{quiz.marksPerQuestion}}</td>
-                <td>
-                    <span class="btn btn-danger me-3">Edit</span>
-                    <span class="btn btn-primary me-3">Questions</span>
-                    <span class="btn btn-success">Attemps</span>
+                <td class="text-center">
+                    <i class="btn btn-outline-success fa-solid fa-chart-pie"></i>
+                </td>
+                <td class="text-center d-flex justify-content-around">
+                    <span (click)="openModal(editQuizModal, i)"><i class="btn btn-outline-danger fa-solid fa-pencil"></i></span>
+                    <i class="btn btn-outline-primary fa-solid fa-book-skull me-3"></i>
                 </td>
             </tr>
         </tbody>
@@ -40,3 +62,10 @@
         </select>
     </div>
 </div>
+
+
+<!-- ********* modals ********* -->
+
+<ng-template #editQuizModal let-modal>
+    <app-update-quiz [modal]="modal" [quiz]="selectedQuiz" [categoryList]="categoryList" (onSave)="updateQuiz($event)"></app-update-quiz>
+</ng-template>

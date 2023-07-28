@@ -1,5 +1,6 @@
 package com.examportal.pariksha.quiz;
 
+import com.examportal.pariksha.quiz.dto.QuizListDTO;
 import com.examportal.pariksha.security.jwt.JwtUtils;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class QuizController {
         String username = jwtUtils.getUserNameFromJwtToken(authorization.split(" ")[1]);
         return quizService.saveQuiz(quiz, username);
     }
+
+    @PostMapping("update")
+    public ResponseEntity<?> updateBasicQuizDetails(@RequestBody @Valid QuizListDTO quizListDTO) {return quizService.updateBasicQuizDetails(quizListDTO);}
 
     @GetMapping("getByCategory")
     public ResponseEntity<?> getAllQuizList(@RequestParam int category) { return quizService.getAllQuizForCategory(category); }

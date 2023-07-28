@@ -5,12 +5,13 @@ import { QuizzesComponent } from './quizzes/quizzes.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CommonModule } from '@angular/common';
 import { UpsertCategoryComponent } from './category/upsert-category/upsert-category.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { Role } from 'src/app/core/helpers/role.enum';
-import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPagination, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { UpdateQuizComponent } from './quizzes/update-quiz/update-quiz.component';
 
 
 const routes : Routes = [
@@ -49,8 +50,10 @@ const routes : Routes = [
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule.forChild(routes),
-        NgbPagination
+        NgbPagination,
+        NgbTooltipModule
     ],
     exports: [],
     declarations: [
@@ -59,7 +62,8 @@ const routes : Routes = [
         QuizzesComponent,
         ManageUsersComponent,
         UpsertCategoryComponent,
-        AdminComponent
+        AdminComponent,
+        UpdateQuizComponent
     ],
     providers: [],
 })

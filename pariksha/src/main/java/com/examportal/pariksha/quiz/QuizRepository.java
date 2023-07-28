@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface QuizRepository extends JpaRepository<Quiz, Integer> {
@@ -13,7 +14,7 @@ public interface QuizRepository extends JpaRepository<Quiz, Integer> {
     Boolean existsById(int id);
 
     @Query(value = "SELECT * from quiz q where q.id = ?1", nativeQuery = true)
-    Quiz searchById(int id);
+    Optional<Quiz> searchById(int id);
 
     @Query("SELECT new com.examportal.pariksha.quiz.dto.QuizListDTO(q.id, q.title, " +
             "(SELECT COUNT(qs) FROM Questions qs WHERE qs.quiz = q) AS numberOfQuestions, " +

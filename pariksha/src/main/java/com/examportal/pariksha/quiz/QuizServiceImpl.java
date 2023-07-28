@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +44,28 @@ public class QuizServiceImpl implements QuizService {
             list = quizRepository.getAllQuizForCategory(category);
         }
         return new ResponseEntity<>(list, HttpStatusCode.valueOf(200));
+    }
+
+    @Override
+    public ResponseEntity<?> updateBasicQuizDetails(QuizListDTO quizListDTO) {
+        Optional<Quiz> optionalQuiz = quizRepository.searchById(quizListDTO.getId());
+        if(optionalQuiz.isPresent()) {
+            Quiz quiz = optionalQuiz.get();
+
+            quiz.setTitle(quizListDTO.getTitle());
+            quiz.setCategory(quizListDTO.getCategory());
+            quiz.setDescription(quizListDTO.getDescription());
+            quiz.setMarksPerQuestion(quizListDTO.getMarksPerQuestion());
+            quiz.setUpdatedAt(new Date());
+
+            quizListDTO.setCategory(quiz.getCategory());
+
+            quizRepository.save(quiz);
+
+            return new ResponseEntity<>(quizListDTO,
+                    HttpStatusCode.valueOf(200));
+        }
+        return new ResponseEntity<>(new MessageResponse("Invalid Request!"), HttpStatusCode.valueOf(400));
     }
 
     @Override
@@ -92,7 +115,7 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public ResponseEntity<?> publishUnpublish(int quizid) {
         if(quizRepository.existsById(quizid)) {
-            Quiz quiz = quizRepository.searchById(quizid);
+            Quiz quiz = quizRepository.searchById(quizid).get();
             quiz.toggleActive();
             quizRepository.save(quiz);
 
