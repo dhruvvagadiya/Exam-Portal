@@ -8,7 +8,7 @@
             <div class="d-flex align-items-center">
                 <select class="form-select me-2" name="category" (change)="onCategoryChange($event)">
                     <option disabled selected>Filter by Category</option>
-                    <option value="-1">None</option>
+                    <option value="-1">All</option>
                     <option [value]="item.id" *ngFor="let item of categoryList">{{ item.name }}</option>
                 </select>
                 <span>
@@ -25,6 +25,7 @@
                 <th scope="col">Category</th>
                 <th scope="col">Number of questions</th>
                 <th scope="col">Marks Per Question</th>
+                <th scope="col">Publish</th>
                 <th scope="col">Data</th>
                 <th scope="col"></th>
             </tr>
@@ -35,12 +36,17 @@
                 <td>{{quiz.category.name}}</td>
                 <td>{{quiz.numberOfQuestions}}</td>
                 <td>{{quiz.marksPerQuestion}}</td>
+                <td>
+                    <div class="form-check form-switch d-flex justify-content-center">
+                        <input class="form-check-input" [id]="'publishStatus' + quiz.id" type="checkbox" role="switch" [checked]="quiz.isActive === 1" (change)="togglePublish(quiz)" [disabled]="isProcessing">
+                    </div>
+                </td>
                 <td class="text-center">
                     <i class="btn btn-outline-success fa-solid fa-chart-pie"></i>
                 </td>
                 <td class="text-center d-flex justify-content-around">
                     <span (click)="openModal(editQuizModal, i)"><i class="btn btn-outline-danger fa-solid fa-pencil"></i></span>
-                    <i class="btn btn-outline-primary fa-solid fa-book-skull me-3"></i>
+                    <span [routerLink]="[quiz.id]"><i class="btn btn-outline-primary fa-solid fa-book-skull me-3"></i></span>
                 </td>
             </tr>
         </tbody>

@@ -12,6 +12,10 @@ import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { Role } from 'src/app/core/helpers/role.enum';
 import { NgbPagination, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateQuizComponent } from './quizzes/update-quiz/update-quiz.component';
+import { QuestionsComponent } from './questions/questions.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { AddQuizComponent } from './add-quiz/add-quiz.component';
 
 
 const routes : Routes = [
@@ -39,9 +43,21 @@ const routes : Routes = [
                 component : ManageUsersComponent
             },
             {
+                path : 'add-quiz',
+                component : AddQuizComponent
+            },
+            {
                 path : 'quiz',
                 component : QuizzesComponent
             },
+            {
+                path : 'quiz/:quizId',
+                component : QuestionsComponent
+            },
+            {
+                path : 'add-question/:questionId/:quizId',
+                component : AddQuestionComponent
+            }
         ]
     },
 ]
@@ -53,7 +69,8 @@ const routes : Routes = [
         ReactiveFormsModule,
         RouterModule.forChild(routes),
         NgbPagination,
-        NgbTooltipModule
+        NgbTooltipModule,
+        AngularEditorModule
     ],
     exports: [],
     declarations: [
@@ -63,7 +80,10 @@ const routes : Routes = [
         ManageUsersComponent,
         UpsertCategoryComponent,
         AdminComponent,
-        UpdateQuizComponent
+        UpdateQuizComponent,
+        QuestionsComponent,
+        AddQuestionComponent,
+        AddQuizComponent
     ],
     providers: [],
 })

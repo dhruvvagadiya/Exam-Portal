@@ -76,23 +76,27 @@ public class QuizServiceImpl implements QuizService {
 
             User user = userRepository.findByUsername(username).get();
             quiz.setCreatedBy(user);
-            quiz.setIsActive(1);
+            quiz.setIsActive(0);
 
             this.quizRepository.save(quiz);
 
-            for(Questions question : quiz.getQuestions()) {
-                question.setQuiz(quiz);
-                this.questionsRepository.save(question);
+            if(quiz.getQuestions() != null) {
+                for(Questions question : quiz.getQuestions()) {
+                    question.setQuiz(quiz);
+                    this.questionsRepository.save(question);
+                    
+                    for(QuestionOptions options : question.getQuestionOptionsList()) {
+                        options.setQuestion(question);
+                        this.questionOptionsRepository.save(options);
+                    }
 
-                for(QuestionOptions options : question.getQuestionOptionsList()) {
-                    options.setQuestion(question);
-                    this.questionOptionsRepository.save(options);
                 }
-
             }
+
             return new ResponseEntity<>(quiz, HttpStatusCode.valueOf(200));
         }
         catch (Exception e){
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(new MessageResponse("Some error occurred!"), HttpStatusCode.valueOf(400));
         }
 
@@ -116,13 +120,17 @@ public class QuizServiceImpl implements QuizService {
     public ResponseEntity<?> publishUnpublish(int quizid) {
         if(quizRepository.existsById(quizid)) {
             Quiz quiz = quizRepository.searchById(quizid).get();
+
+            if(quiz.getIsActive() == 0 && !quiz.hasValidQuestions()) {
+                return new ResponseEntity<>(new MessageResponse("Please add minimum 5 questions in the quiz!"), HttpStatusCode.valueOf(400));
+            }
+
             quiz.toggleActive();
             quizRepository.save(quiz);
-
             return new ResponseEntity<>(true, HttpStatusCode.valueOf(200));
         }
         else {
-            return new ResponseEntity<>(false, HttpStatusCode.valueOf(200));
+            return new ResponseEntity<>(new MessageResponse("Invalid Request!"), HttpStatusCode.valueOf(400));
         }
     }
 }

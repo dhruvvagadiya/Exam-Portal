@@ -16,5 +16,6 @@ public class QuizListDTO {
     private String description;
     private int marksPerQuestion;
     private Category category;
+    private int isActive;
 }
 

@@ -35,8 +35,8 @@ public class QuizController {
         return quizService.getQuizById(quizid);
     }
 
-    @GetMapping("toggleStatus")
-    public ResponseEntity<?> publishUnpublish (@RequestParam int quizid) {
-        return this.quizService.publishUnpublish(quizid);
+    @PostMapping("toggleStatus")
+    public ResponseEntity<?> publishUnpublish (@RequestParam int quizId) {
+        return this.quizService.publishUnpublish(quizId);
     }
 }

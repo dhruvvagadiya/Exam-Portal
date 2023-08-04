@@ -24,13 +24,11 @@ public class Questions {
     @NotBlank
     private String title;
 
-    private String description;
-
     @ManyToOne
     @JsonIgnore
     private Quiz quiz;
 
-    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionOptions> questionOptionsList;
 
     private Date createdAt = new Date();
@@ -38,9 +36,22 @@ public class Questions {
     public Questions() {
     }
 
-    public Questions(String title, String description, Quiz quiz) {
+    public Questions(String title, Quiz quiz) {
         this.title = title;
-        this.description = description;
         this.quiz = quiz;
+    }
+
+    public void addOption(QuestionOptions option) {
+        this.questionOptionsList.add(option);
+    }
+
+    public boolean hasAnswer() {
+        int cnt = 0;
+        for(QuestionOptions options : this.questionOptionsList) {
+            if(options.getIsAnswer() == 1) {
+                cnt++;
+            }
+        }
+        return cnt == 1;
     }
 }

@@ -10,7 +10,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './core/helpers/token.interceptor';
 import { AuthService } from './core/services/auth.service';
 import { UnauthorizedComponent } from './views/unauthorized/unauthorized.component';
-import { AdminModule } from './views/admin/admin.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -24,7 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
     AuthGuard,
@@ -33,7 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       useClass: TokenInterceptor,
       multi: true,
       deps: [AuthService],
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

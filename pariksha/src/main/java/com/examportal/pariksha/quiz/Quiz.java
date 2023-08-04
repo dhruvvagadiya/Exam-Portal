@@ -64,4 +64,8 @@ public class Quiz {
     public void toggleActive() {
         this.isActive = 1 - this.isActive;
     }
+
+    public boolean hasValidQuestions() {
+        return questions.size() >= 5;
+    }
 }

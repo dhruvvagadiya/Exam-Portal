@@ -6,6 +6,8 @@ import { Category } from 'src/app/core/models/category/category.model';
 import { CategoryService } from 'src/app/core/services/categories.service';
 import { QuizService } from 'src/app/core/services/quiz.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-quizzes',
   templateUrl: './quizzes.component.html',
@@ -24,6 +26,8 @@ export class QuizzesComponent implements OnInit {
   page = 1;
 	pageSize = 7;
 	collectionSize = this.filteredQuizzes.length;
+
+  isProcessing = false;
 
 
   constructor(private quizService : QuizService, private categoryService: CategoryService, private modalService : NgbModal) {}
@@ -58,6 +62,25 @@ export class QuizzesComponent implements OnInit {
     }, err => {
       toast.error.fire({timer : 1500, title : err.message});
     });
+  }
+
+  togglePublish(quiz : QuizList) {
+
+    if (this.isProcessing) {
+      return;
+    }
+
+    this.isProcessing = true;
+
+    this.quizService.togglePublish(quiz.id).subscribe(data => {
+      quiz.isActive = 1 - quiz.isActive;
+      this.isProcessing = false;
+    },
+    err => {
+      $('#publishStatus' + quiz.id).prop('checked',(quiz.isActive === 1));
+      toast.error.fire({ title : err.error.message ? err.error.message : "Error while updating publish status!", timer : 3000})
+      this.isProcessing = false;
+    })
   }
 
   openModal(editQuizModal : TemplateRef<any>, index: number) {

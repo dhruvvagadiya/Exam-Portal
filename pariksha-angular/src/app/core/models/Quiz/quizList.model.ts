@@ -6,5 +6,6 @@ export interface QuizList {
     description : string,
     numberOfQuestions : number,
     marksPerQuestion : number,
-    category : Category
+    category : Category,
+    isActive : number
 }

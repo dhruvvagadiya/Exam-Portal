@@ -10,6 +10,11 @@ export const adminMenu = [
         route : 'admin/manage'
     },
     {
+        name : "add quiz",
+        icon : 'fa-solid fa-square-plus',
+        route : 'admin/add-quiz'
+    },
+    {
         name : "quizzes",
         icon : 'fa-solid fa-book-open-reader',
         route : 'admin/quiz'

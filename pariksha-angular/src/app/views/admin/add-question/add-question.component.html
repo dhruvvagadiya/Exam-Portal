@@ -1,0 +1,46 @@
+<div class="container" *ngIf="question">
+    <b class="fs-4">{{ question.id > 0 ? 'Update Question' : 'Add Question' }}</b>
+
+    <form class="mt-3" [formGroup]="addQuestionForm" (ngSubmit)="onSubmit()">
+
+        <input type="text" hidden name="id">
+
+        <!-- Title input -->
+        <div class="form-outline mb-2">
+            <label class="text-muted">Enter your text here..</label>
+            <angular-editor [placeholder]="'Enter text here...'" [config]="config" formControlName="title" [(ngModel)]="question.title" name="title"></angular-editor>
+        </div>
+
+        <div class="form-outline mb-2">
+            <label class="form-label">Options <span class="text-danger">* </span><span class="text-muted">(Minimum 2, Maximum 10)</span></label>
+
+            <div formArrayName="questionOptions" class="row">
+                <div *ngFor="let optionForm of options.controls; let i = index" class="col-md-6">
+
+                    <div [formGroupName]="i"> 
+
+                        <input type="text" class="form-control" formControlName="id" hidden [(ngModel)]="question.questionOptionsList[i].id">
+
+                        <div class="input-group mb-3 align-items-center">
+                            {{question.questionOptionsList[i].isAnswer}} ans
+                            <input type="radio" class="form-check-input me-2" name="isAnswer" formControlName="isAnswer" [checked]="question.questionOptionsList[i].isAnswer === 1" (change)="selectAnswer(i)">
+
+                            <input type="text" class="form-control me-2" formControlName="content" required maxlength="50" [(ngModel)]="question.questionOptionsList[i].content">
+                            <span (click)="deleteOption(i)"><i class="fa-solid fa-x text-danger"></i></span>
+                        </div>
+
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+
+
+        <div class="d-flex">
+            <button type="button" class="btn btn-outline-secondary me-2" (click)="addOption()">Add Option</button>
+            <button type="submit" class="btn btn-outline-primary" [disabled]="addQuestionForm.invalid || !addQuestionForm.dirty">Save</button>
+        </div>
+
+    </form>
+
+</div>

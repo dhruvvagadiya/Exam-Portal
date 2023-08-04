@@ -1,0 +1,48 @@
+<div class="container">
+    <form #updateQuizForm="ngForm" (ngSubmit)="save()">
+
+        <input type="text" hidden name="id">
+    
+        <!-- Title input -->
+        <div class="form-outline mb-4">
+            <label class="form-label">Title <span class="text-danger">*</span></label>
+    
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="title" required maxlength="50" [(ngModel)]="quiz.title">
+            </div>
+        </div>
+      
+        <!-- Decription input -->
+        <div class="form-outline mb-4">
+            <label class="form-label">Description <span class="text-danger">*</span></label>
+    
+            <div class="input-group mb-3">
+                <textarea class="form-control" name="description" required maxlength="100" [(ngModel)]="quiz.description"></textarea>
+            </div>
+        </div>
+      
+                
+        <div class="form-outline mb-4">
+            <label class="form-label">Category <span class="text-danger">*</span></label>
+    
+            <div class="input-group mb-3">
+                <select class="form-select" name="category" aria-label="Default select example" [(ngModel)]="quiz.category.id">
+                    <option [ngValue]="item.id" [selected]="quiz.category.id === item.id" *ngFor="let item of categoryList">{{ item.name }}</option>
+                </select>
+            </div>
+            
+        </div>
+    
+        <div class="form-outline mb-4">
+            <label class="form-label">Marks Per Question <span class="text-danger">*</span></label>
+    
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" min="1" max="10" name="marksPerQuestion" required [(ngModel)]="quiz.marksPerQuestion"/>
+            </div>
+            
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save</button>
+    
+      </form>
+</div>

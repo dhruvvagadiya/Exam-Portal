@@ -21,12 +21,11 @@ export class UserService {
     }
 
     getCurrentUser(){
-        let username = this.authService.getUsernameFromToken();
-        this.getUserByUsername(username).subscribe((data : User) => {
+        this.http.get<User>(this.apiUrl).subscribe((data : User) => {
             this.userSubject.next(data);
         });
     }
-
+    
     getUserByUsername(username : string){ 
         return this.http.get<User>(this.apiUrl, {
             params : new HttpParams().append('username', username)

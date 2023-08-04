@@ -8,7 +8,11 @@ export class QuizService {
 
     constructor(private http : HttpClient) { }
 
-    apiUrl = environment.apiUrl + '/quiz'
+    private apiUrl = environment.apiUrl + '/quiz'
+
+    createQuiz(quiz : QuizList) {
+        return this.http.post(this.apiUrl, quiz);
+    }
     
     getQuizByCategoryId (id : number) {        
         return this.http.get<QuizList []>(this.apiUrl + '/getByCategory', {
@@ -18,5 +22,11 @@ export class QuizService {
 
     updateBasicQuizDetails(quizList : QuizList) {
         return this.http.post<QuizList>(this.apiUrl + '/update', quizList);
+    }
+
+    togglePublish (quizId : number) {
+        return this.http.post(this.apiUrl + '/toggleStatus', null, {
+            params : new HttpParams().append('quizId', quizId)
+        })
     }
 } 

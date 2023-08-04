@@ -18,11 +18,12 @@ public interface QuizRepository extends JpaRepository<Quiz, Integer> {
 
     @Query("SELECT new com.examportal.pariksha.quiz.dto.QuizListDTO(q.id, q.title, " +
             "(SELECT COUNT(qs) FROM Questions qs WHERE qs.quiz = q) AS numberOfQuestions, " +
-            "q.description, q.marksPerQuestion, q.category) FROM Quiz q")
+            "q.description, q.marksPerQuestion, q.category, q.isActive) FROM Quiz q")
     List<QuizListDTO> getAllQuizForCategory();
 
     @Query("SELECT new com.examportal.pariksha.quiz.dto.QuizListDTO(q.id, q.title, " +
             "(SELECT COUNT(qs) FROM Questions qs WHERE qs.quiz = q) AS numberOfQuestions, " +
-            "q.description, q.marksPerQuestion, q.category) FROM Quiz q WHERE q.category.id = ?1")
+            "q.description, q.marksPerQuestion, q.category, q.isActive) FROM Quiz q WHERE q.category.id = ?1" +
+            "ORDER BY createdAt")
     List<QuizListDTO> getAllQuizForCategory(int category);
 }

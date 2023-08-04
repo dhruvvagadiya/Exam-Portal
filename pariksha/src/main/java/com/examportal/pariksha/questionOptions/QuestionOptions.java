@@ -25,7 +25,6 @@ public class QuestionOptions {
     private Questions question;
 
     @Column(columnDefinition = "INT DEFAULT 0")
-    @JsonIgnore
     private int isAnswer;
 
     public QuestionOptions() {
@@ -35,5 +34,10 @@ public class QuestionOptions {
         this.content = content;
         this.question = question;
         this.isAnswer = isAnswer;
+    }
+
+    public void updateOption(QuestionOptions option) {
+        this.content = option.getContent();
+        this.isAnswer = option.getIsAnswer();
     }
 }

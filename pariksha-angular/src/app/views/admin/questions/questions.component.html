@@ -1,0 +1,26 @@
+<div class="container">
+
+    <div class="d-flex justify-content-between">
+        <b class="fs-3">Questions</b>
+        <div class="btn btn-outline-success" [routerLink]="['../../','add-question',0, quizId]">Add Question</div>
+    </div>
+    <hr>
+    <div *ngFor="let item of questions; let i=index;" class="my-3 questionBox rounded">
+        <b class="fs-5">Q.{{i+1}}) <span [innerHTML]="item.title"></span></b>
+
+        <!-- options -->
+        <div class="row">
+            <div class="col-md-6" *ngFor="let options of item.questionOptionsList; let i = index">
+                {{i+1}}) {{options.content}}
+            </div>
+        </div>
+        <hr>
+
+        <div class="mb-2">
+            Correct Answer : {{getAnswer(item.questionOptionsList)}}
+        </div>
+
+        <div class="btn btn-primary me-2" (click)="editQuestion(item)" [routerLink]="['../../','add-question',item.id, quizId]">Edit</div>
+        <div class="btn btn-danger" (click)="deleteQuestion(item.id, i)">Delete</div>
+    </div>
+</div>
